@@ -84,11 +84,8 @@ jobs:
         with:
           use-installer: true
 
-      - name: Print Working Directory
-        run: pwd
-
-      - name: Run SAM Build Dynamically
-        run: sam build --template $(pwd)/sam-app/template.yml --use-container
+      - name: Run SAM Build with Correct Template Path
+        run: sam build --template /root/aws-sam/sam-app/template.yml --use-container
        # - run: sam build --template ${SAM_TEMPLATE} --use-container
 
       - name: Assume the testing pipeline user role
@@ -122,11 +119,8 @@ jobs:
         with:
           use-installer: true
 
-      - name: Print Working Directory
-        run: pwd
-
-      - name: Run SAM Build Dynamically
-        run: sam build --template $(pwd)/sam-app/template.yml --use-container
+      - name: Run SAM Build with Correct Template Path
+        run: sam build --template /root/aws-sam/sam-app/template.yml --use-container
 
       #- name: Build resources
       # run: sam build --template ${SAM_TEMPLATE} --use-container
