@@ -83,7 +83,13 @@ jobs:
       - uses: aws-actions/setup-sam@v2
         with:
           use-installer: true
-      - run: sam build --template ${SAM_TEMPLATE} --use-container
+
+      - name: Print Working Directory
+        run: pwd
+
+      - name: Run SAM Build Dynamically
+        run: sam build --template $(pwd)/sam-app/template.yml --use-container
+       # - run: sam build --template ${SAM_TEMPLATE} --use-container
 
       - name: Assume the testing pipeline user role
         uses: aws-actions/configure-aws-credentials@v4
@@ -116,8 +122,14 @@ jobs:
         with:
           use-installer: true
 
-      - name: Build resources
-        run: sam build --template ${SAM_TEMPLATE} --use-container
+      - name: Print Working Directory
+        run: pwd
+
+      - name: Run SAM Build Dynamically
+        run: sam build --template $(pwd)/sam-app/template.yml --use-container
+
+      #- name: Build resources
+      # run: sam build --template ${SAM_TEMPLATE} --use-container
 
       - name: Assume the testing pipeline user role
         uses: aws-actions/configure-aws-credentials@v4
